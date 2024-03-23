@@ -13,3 +13,10 @@ def init1(S,K):
     
 def dzialaj(W, X):
     print("Bye")       
+    
+
+if __name__ == '__main__':
+    S = 3  # Liczba wejść do sieci
+    K = 4  # Liczba neuronów w warstwie
+    W = init1(S, K)
+    print(W)
