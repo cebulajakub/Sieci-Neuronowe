@@ -34,13 +34,15 @@ def dzialaj(W1, W2, X):
     return Y1, Y2
 
 
-def ucz(W1przed, W2przed, P, T, n):
+def ucz(W1przed, W2przed, P, T, n, wspUcz, momentum):
     liczbaPrzykladow = len(P)
     W1 = W1przed
     W2 = W2przed
     S2 = W2.shape[0]
-    wspUcz = 0.03
 
+    # Inicjalizacja zmiennych przechowujących poprzednie zmiany wag
+    dW1_prev = np.zeros_like(W1)
+    dW2_prev = np.zeros_like(W2)
 
     for i in range(n):
         for example in range(liczbaPrzykladow):
@@ -58,13 +60,19 @@ def ucz(W1przed, W2przed, P, T, n):
             # backprop
             E1 = np.dot(W2[1:, :], E2) * sigmoid_derivative(Y1)
 
-
             dW2 = wspUcz * np.outer(X2, E2)
             dW1 = wspUcz * np.outer(X1, E1)
 
+            # Zastosowanie momentum
+            dW1 += momentum * dW1_prev
+            dW2 += momentum * dW2_prev
 
             W1 += dW1[:, :W1.shape[1]]
             W2 += dW2
+
+            # Aktualizacja poprzednich zmian wag
+            dW1_prev = dW1
+            dW2_prev = dW2
 
     W1po = W1
     W2po = W2
@@ -72,10 +80,13 @@ def ucz(W1przed, W2przed, P, T, n):
     return W1po, W2po
 
 
+
 if __name__ == '__main__':
     S = 2
     K1 = 2
     K2 = 1
+    momentum = 0.9
+    wspUcz = 0.03
     W1, W2 = init2(S, K1, K2)
 
     P = np.array([[0.0, 0.0],
@@ -88,7 +99,7 @@ if __name__ == '__main__':
                   [1.0],
                   [0.0]])
 
-    W1po, W2po = ucz(W1, W2, P, T, 100000)
+    W1po, W2po = ucz(W1, W2, P, T, 100000,wspUcz ,momentum)
 
     for i in range(P.shape[0]):
         Ypo1, Ypo2 = dzialaj(W1po, W2po, P[i])
