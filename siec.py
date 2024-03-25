@@ -86,7 +86,7 @@ if __name__ == '__main__':
                   [0.0, 0.0, 1.0]])
 
     Wprzed = init1(S, K)
-   # print(P[0, :].reshape(-1, 1))
+    #print(P[0, :].reshape(-1, 1))
     #Yprzed = dzialaj(Wprzed, P)
     #print("Yprzed:", Yprzed)
     krok=100
@@ -96,24 +96,37 @@ if __name__ == '__main__':
     for i in range(P.shape[0]):
         Ypo = dzialaj(Wpo, P[i])
         print("Input:", P[i], "Output:", Ypo)
-    #macierz = np.array([[1, 2, 3],
-     #               [4, 5, 6],
-      #              [7, 8, 9],
-       #             [10, 11, 12],
-
-        #            [13, 14, 15]])
-
-# Przykładowy wektor o długości 3
-    #wektor = np.array([1, 2, 3])
-
-# Dodawanie wartości z wektora do każdej kolumny macierzy
-    #macierz_z_dodanym_wektorem = macierz + wektor
-
-    #print("Macierz po dodaniu wektora:")
-    #print(macierz_z_dodanym_wektorem)
-
     
+    #PROBA DODANIA MOMENTUM
+    ####################################3
+    # def ucz(Wprzed, P, T, krok, blad, momentum=0.9):
+    # W = Wprzed
+    # wspUcz = 0.03
 
+    # Errors_for_plot = []
+    # MSE = 0
+    # dW_prev = np.zeros_like(W)  # Przechowywanie poprzednich zmian wag
 
-# print(P.shape[0])
-# ucz(W, P,1 ,1))
+    # for i in range(krok):
+    #     random_number = random.randint(0, P.shape[0] - 1)
+    #     random_input = P[random_number, :]
+    #     Y = dzialaj(W, random_input)
+    #     D = T[random_number, :] - Y
+
+    #     MSE += np.sum(D ** 2)
+    #     MSE /= P.shape[0]
+    #     Errors_for_plot.append(MSE)
+
+    #     if i >= krok:
+    #         break
+    #     elif MSE <= blad:
+    #         break
+
+    #     dW = wspUcz * np.dot(random_input.reshape(-1, 1), D.reshape(1, -1))
+    #     dW = momentum * dW_prev + dW  # Uwzględnienie momentum
+    #     W += dW
+    #     dW_prev = dW  # Aktualizacja poprzednich zmian wag
+
+    # plt.plot(Errors_for_plot)
+    # plt.show()
+    # return W
