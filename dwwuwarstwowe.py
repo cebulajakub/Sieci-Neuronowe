@@ -104,3 +104,4 @@ if __name__ == '__main__':
     for i in range(P.shape[0]):
         Ypo1, Ypo2 = dzialaj(W1po, W2po, P[i])
         print("Input:", P[i], "Output:", Ypo2)
+
