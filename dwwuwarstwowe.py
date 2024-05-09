@@ -199,7 +199,7 @@ if __name__ == '__main__':
     momentum = 0.9
     wspUcz = 0.5
     W1, W2 = init2(S, K1, K2)
-
+    W11, W21 = init2(S, K1, K2)
     P = np.array([[0.0, 0.0],
                   [0.0, 1.0],
                   [1.0, 0.0],
@@ -213,11 +213,11 @@ if __name__ == '__main__':
     P1 = np.array([0.0, 0.0])
     T1 = np.array([0.0])
 
-    W1po1, W2po1 = ucz(W1, W2, P1, T1, 1000, wspUcz, momentum)
-    #W1po, W2po = ucz(W1, W2, P, T, 1000, wspUcz, momentum)
-    #for i in range(P.shape[0]):
-     #   Ypo1, Ypo2 = dzialaj(W1po, W2po, P[i])
-      #  print("Input:", P[i], "Output:", Ypo2)
+    W1po1, W2po1 = ucz(W11, W21, P1, T1, 1000, wspUcz, momentum)
+    W1po, W2po = ucz(W1, W2, P, T, 1000, wspUcz, momentum)
+    for i in range(P.shape[0]):
+        Ypo1, Ypo2 = dzialaj(W1po, W2po, P[i])
+        print("Input:", P[i], "Output:", Ypo2)
 
 
 

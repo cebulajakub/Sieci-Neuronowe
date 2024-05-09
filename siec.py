@@ -84,8 +84,24 @@ if __name__ == '__main__':
     T = np.array([[1.0, 0.0, 0.0],
                   [0.0, 1.0, 0.0],
                   [0.0, 0.0, 1.0]])
-
+    #człowiek
+    C = [2.0, 0.02, 0.02, 0.01, 0.05]
+    #Nietoperz
+    N = [2.0, -1, 3.0, -1.5, -1]
     Wprzed = init1(S, K)
+    #Struś
+    S = [2.0, 0.01, 0.01, 3.0, 2.0]
+    #Wąż
+    W = [0, 0.5, -1, -1, 0.5]
+
+
+    print("Dane wejsciowe :")
+    print("Wejscie 1 ile ma nóg")
+    print("Wejscie 2 czy żyje w wodzie")
+    print("Wejscie 3 czy umie latac")
+    print("Wejscie 4 czy ma pióra")
+    print("Wejscie 5 czy jest jajorodny")
+    print("Output  ssak    ptak   ryba")
     # print(P[0, :].reshape(-1, 1))
     # Yprzed = dzialaj(Wprzed, P)
     # print("Yprzed:", Yprzed)
@@ -96,6 +112,20 @@ if __name__ == '__main__':
     for i in range(P.shape[0]):
         Ypo = dzialaj(Wpo, P[i])
         print("Input:", P[i], "Output:", Ypo)
+
+    YpoC = dzialaj(Wpo, C)
+    print("Czlowiek")
+    print("Input:", C, "Output:", YpoC)
+    YpoN = dzialaj(Wpo, N)
+    print("Nietoperz")
+    print("Input:", N, "Output:", YpoN)
+    YpoS = dzialaj(Wpo, S)
+    print("Sruś")
+    print("Input:", S, "Output:", YpoS)
+    YpoW = dzialaj(Wpo, W)
+    print("Wąż")
+    print("Input:", W, "Output:", YpoW)
+
 
 
 #PROBA DODANIA MOMENTUM
